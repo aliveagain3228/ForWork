@@ -1,0 +1,43 @@
+@import 'helpers/index';
+
+.container {
+  width: 100%;
+  max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
+  margin-inline:  0 auto;
+  padding-inline: var(--container-padding-x);
+
+  h1 {
+    @include fluid-text(32,20);
+    margin-bottom: 20px;
+  }
+}
+
+
+
+.visually-hidden {
+  @include visually-hidden;
+}
+
+.visible-tablet {
+  @include tablet-above {
+    display: none !important;
+  }
+}
+
+.hidden-tablet {
+  @include tablet {
+    display: none !important;
+  }
+}
+
+.visible-mobile {
+  @include mobile-above {
+    display: none !important;
+  }
+}
+
+.hidden-mobile {
+  @include mobile {
+    display: none !important;
+  }
+}

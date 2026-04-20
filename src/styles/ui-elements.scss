@@ -1,0 +1,36 @@
+.btn {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  border: none;
+  padding: 10px 20px;
+  border-radius: var(--border-radius-m);
+  cursor: pointer;
+  font-weight: 600;
+
+  &:hover {
+    background-color: color-mix(in srgb, var(--color-accent) 80%, black);
+  }
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  color: var(--color-gray);
+  font-size: 14px;
+}
+
+input,
+  select {
+  background-color: transparent;
+  color: var(--color-white);
+  border: var(--border-width-s) solid var(--color-gray);
+  border-radius: var(--border-width-s);
+  padding: 10px 15px;
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 10px var(--color-accent);
+  }
+  }

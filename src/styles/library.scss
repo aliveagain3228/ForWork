@@ -1,0 +1,151 @@
+.library-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 120px 20px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.library-header {
+  margin-bottom: 40px;
+  width: 100%;
+
+  .library-title {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 25px;
+    color: var(--color-white);
+  }
+}
+
+.top-actions {
+  display: flex;
+  justify-content: center;
+  gap:15px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+.recipe-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap:12px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.recipe-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1a1a1a;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 18px 24px;
+  border-radius: var(--border-radius-m);
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+    background: #222;
+  }
+
+  .recipe-name {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--color-white)
+  }
+}
+
+.recipe-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-icon-delete {
+  background: transparent;
+  border: none;
+  color: var(--color-gray);
+  font-size: 1.2rem;
+  padding: 8px;
+  cursor: pointer;
+  transition: color 0.2s;
+
+  &:hover {
+    color: var(--color-accent);
+  }
+}
+
+.btn-primary {
+  background: var(--color-accent);
+  color: white;
+  padding: 12px 28px;
+  border-radius: var(--border-radius);
+  border:none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 1px solid var(--color-accent);
+  color: var(--color-white);
+  padding: 12px 28px;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover {
+    border-color: var(--color-white);
+  }
+}
+
+.stats-info {
+  font-size: 0.9rem;
+  color: var(--color-gray);
+  margin-bottom: 10px;
+
+  span {
+    color: var(--color-accent);
+    font-weight: bold;
+  }
+}
+
+.library-footer {
+  margin-top: 40px;
+}
+
+.btn-clear {
+  background: transparent;
+  border: none;
+  color: var(--color-gray);
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 0.85rem;
+
+  &:hover {
+    color: var(--color-accent)
+  }
+}
+
+@media (max-width: 768px) {
+  .library-container {
+    padding: 90px 16px 40px;
+  }
+
+  .library-title {
+    letter-spacing: 10px;
+  }
+
+  .recipe-card {
+    padding: 14px 16px;
+  }
+}

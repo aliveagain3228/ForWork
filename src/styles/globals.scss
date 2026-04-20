@@ -1,0 +1,84 @@
+html {
+  &.is-lock {
+    overflow: hidden;
+  }
+}
+
+body {
+  font-size: clamp(0.875rem, 2vw, 1.1rem);
+
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-family-base), sans-serif;
+  color: var(--color-white);
+  background-color: var(--color-black);
+}
+
+h1,
+.h1 {
+  font-size: clamp(1.75rem, 5vw, 3.6rem);
+
+  font-weight: 700;
+}
+
+h2,
+.h2 {
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  font-weight: 700;
+}
+
+h3,
+.h3 {
+  font-size: clamp(1.25rem, 3vw, 2.3rem);
+  font-weight: 700;
+}
+
+h4,
+.h4 {
+  font-size: clamp(1.5rem, 2vw, 1.5rem);
+  font-weight: 400;
+}
+
+h5,
+.h5 {
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+
+  font-weight: 400;
+}
+
+h6,
+.h6 {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+
+  font-weight: 400;
+}
+
+a,
+button,
+label,
+input,
+textarea,
+select,
+svg * {
+  transition-duration: var(--transition-duration);
+}
+
+a {
+  color: inherit;
+
+  &[class] {
+    text-decoration: none;
+  }
+}
+
+@media (any-hover: hover) {
+  a:hover {
+    color:var(--color-accent);
+  }
+}
+
+:focus-visible {
+  outline: 2px dashed var(--color-white);
+  outline-offset: 4px;
+  transition-duration: 0s !important;
+}
