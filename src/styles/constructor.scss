@@ -1,3 +1,9 @@
+.field-error {
+  color: var(--color-accent);
+  font-size: 0.8rem;
+  margin-top: -12px;
+}
+
 .loader-container {
   position: fixed;
   inset: 0;
@@ -64,10 +70,6 @@ fieldset {
     color: var(--color-gray);
     font-size: 0.85rem;
     padding: 0 8px;
-  }
-
-  input, select {
-    padding: 10px 20px;
   }
 }
 
@@ -155,6 +157,18 @@ fieldset {
     input,select {
       width: 100%;
     }
+  }
+}
+
+.input--error {
+  border-color: var(--color-accent) !important;
+  box-shadow: 0 0 0 2px rgba(229, 0, 0, 0.2);
+  animation: shake 0.3s ease;
+  
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
   }
 }
 

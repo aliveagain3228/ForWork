@@ -39,6 +39,10 @@
   font-size: 1.1rem;
   letter-spacing: 1px;
   color: var(--color-white);
+  
+  @media (max-width: 480px) {
+    display: none;
+  }
 }
 
 .app-header__nav {

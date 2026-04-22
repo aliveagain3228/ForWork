@@ -9,7 +9,7 @@ export default function Header() {
     const [isScrolled, setIsScrolled] = useState(false)
 
     useEffect(() => {
-        const handleScroll = () => setIsScrolled(window.srollY> 20)
+        const handleScroll = () => setIsScrolled(window.scrollY > 20)
 
         window.addEventListener('scroll', handleScroll)
         return () => window.removeEventListener('scroll', handleScroll)
@@ -18,12 +18,10 @@ export default function Header() {
     const headerClass = `app-header ${isScrolled ? 'app-header--scrolled' : ''}`
 
     return (
-        <header className="app-header">
-            <div className="app-header__left">
-
-            </div>
-            <div className="app-header__logo" onClick={() => navigate('/')}>
-                <GiSaltShaker /> Spice Calc
+        <header className={headerClass}>
+            <div className="app-header__left" onClick={() => navigate('/')}>
+                <GiSaltShaker className="app-header__logo" />
+                <span className="app-header__brand">Spice Calc</span>
             </div>
 
             <nav className="app-header__nav">

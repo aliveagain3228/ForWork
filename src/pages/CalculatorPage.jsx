@@ -37,11 +37,18 @@ export default function CalculatorPage() {
                         Коэффициент (500г = 0.5)
                         <input
                             className="calculator-title-input"
-                            type="number"
+                            type="text"
+                            inputMode="decimal"
                             step="0.01"
                             min={0}
                             value={weight}
-                            onChange={(e) => setWeight(parseFloat(e.target.value) || 0)}
+                            onChange={(e) => {
+                                const val = e.target.value.replace(',', '.')
+
+                                if ( val === '' || val === '.' || /^\d*\.?\d*$/.test(val)) {
+                                    setWeight(val)
+                                }
+                            }}
                         />
                     </label>
 
@@ -49,7 +56,7 @@ export default function CalculatorPage() {
                     <ul className="ing-list">
                         {selectedRecipe?.list.map((ing, index) => (
                             <li key={index}>
-                                <strong>{ing.name}:</strong> {(ing.amount * weight).toFixed(1)} {ing.unit}
+                                <strong>{ing.name}:</strong> {(ing.amount * (parseFloat(weight) || 0)).toFixed(1)} {ing.unit}
                             </li>
                         ))}
                     </ul>
