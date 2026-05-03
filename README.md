@@ -4,7 +4,7 @@
 и рассчитывать нужное количество специй под любой вес мяса.
 
 ## 🔗 Демо
-[Открыть приложение](https://aliveagain3228.github.io/ForWork/)
+[Открыть приложение](https://aliveagain3228.github.io/Ingredient-Calculator/)
 
 ## 🛠 Стек
 - React 19
