@@ -1,4 +1,4 @@
-import {SiTelegram, SiGithub} from 'react-icons/si'
+import {SiTelegram, SiGithub, SiGmail} from 'react-icons/si'
 
 export default function ContactFooter() {
     return (
@@ -11,6 +11,9 @@ export default function ContactFooter() {
                 </a>
                 <a href="https://github.com/aliveagain3228" className="contact-footer__link" target="_blank" rel="noopener">
                     <SiGithub /> <span>GitHub</span>
+                </a>
+                <a href="mailto:kojda1337@gmail.com" className="contact-footer__link" target="_blank" rel="noopener">
+                    <SiGmail /> <span>Gmail</span>
                 </a>
             </div>
         </footer>
