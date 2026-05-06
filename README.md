@@ -18,25 +18,25 @@
 
 </div>
 
-## 📝 О проекте
+## 📝 About the Project
 
-**Spice Calc** — это удобный инструмент для поваров и кулинаров. Приложение позволяет создавать рецепты с детализацией ингредиентов и автоматически рассчитывать необходимое количество специй под любой заданный вес мяса или основы.
+**Spice Calc** is a handy tool for chefs and culinary enthusiasts. The application allows users to create recipes with detailed ingredient lists and automatically calculates the required amount of spices for any given weight of meat or base.
 
-### 📸 Скриншот приложения
+### 📸 Application Screenshot
 
 <img src="./public/preview.png" alt="Spice Calc Interface" width="800" />
 
-## ✨ Ключевые возможности
+## ✨ Key Features
 
-- 🧮 **Динамический расчет:** Мгновенный перерасчет граммовок специй при изменении базового веса.
-- 📋 **Управление рецептами:** Создание и редактирование списка ингредиентов.
-- 💫 **Плавный UI:** Анимации интерфейса реализованы с помощью Framer Motion.
-- 📱 **Адаптивный дизайн:** Полностью отзывчивый интерфейс, написанный с использованием SCSS.
+- 🧮 **Dynamic Calculation:** Instant recalculation of spice quantities when the base weight changes.
+- 📋 **Recipe Management:** Create and edit custom ingredient lists.
+- 💫 **Smooth UI:** Interface animations implemented using Framer Motion.
+- 📱 **Responsive Design:** Fully responsive interface built with SCSS.
 
-## 🚀 Запуск проекта локально
+## 🚀 Local Setup
 
-Чтобы развернуть проект на своем компьютере, выполните следующие шаги:
+To deploy the project on your machine, follow these steps:
 
-1. **Клонируйте репозиторий:**
+1. **Clone the repository:**
    ```bash
    git clone [https://github.com/aliveagain3228/Ingredient-Calculator.git](https://github.com/aliveagain3228/Ingredient-Calculator.git)
