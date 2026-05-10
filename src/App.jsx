@@ -4,19 +4,22 @@ import LibraryPage from './pages/LibraryPage'
 import CalculatorPage from './pages/CalculatorPage'
 import ConstructorPage from './pages/ConstructorPage.jsx'
 import PageLoader from "./components/PageLoader/PageLoader.jsx";
+import { LocaleProvider } from "./context/LocaleContext.jsx";
 
 export default function  App() {
 
   return (
-      <HashRouter>
-          <PageLoader />
-          <Header />
-          <Routes>
-              <Route path="/" element={<LibraryPage /> } />
-              <Route path="/calculator" element={<CalculatorPage /> } />
-              <Route path="/constructor" element={<ConstructorPage /> } />
-              <Route path="/constructor/:id" element={<ConstructorPage /> } />
-          </Routes>
-      </HashRouter>
+      <LocaleProvider>
+          <HashRouter>
+              <PageLoader />
+              <Header />
+              <Routes>
+                  <Route path="/" element={<LibraryPage /> } />
+                  <Route path="/calculator" element={<CalculatorPage /> } />
+                  <Route path="/constructor" element={<ConstructorPage /> } />
+                  <Route path="/constructor/:id" element={<ConstructorPage /> } />
+              </Routes>
+          </HashRouter>
+      </LocaleProvider>
   )
 }

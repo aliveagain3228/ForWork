@@ -1,10 +1,20 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { GiSaltShaker } from "react-icons/gi";
+import { useTranslation } from "../../context/LocaleContext.jsx";
 
 export default function Header() {
     const navigate = useNavigate()
     const location = useLocation()
+
+    const { locale, changeLocale, t } = useTranslation()
+    const [isLangOpen, setIsLangOpen] = useState(false)
+
+    const LANGS = [
+        { locale: 'ru', label: 'Русский', flag: 'RU'},
+        { locale: 'en', label: 'English', flag: 'EN' },
+        { locale: 'ua', label: 'Українська', flag: 'UA' },
+    ]
 
     const [isScrolled, setIsScrolled] = useState(false)
 
@@ -29,16 +39,46 @@ export default function Header() {
                     onClick={() => navigate('/')}
                     className={`nav-link ${location.pathname === '/' ? 'nav-link--active' : ''}`}
                 >
-                    Мои рецепты
+                    {t('nav.myRecipes')}
                 </button>
 
                 <button
                     onClick={() => navigate('/calculator')}
                     className={`nav-link ${location.pathname === '/calculator' ? 'nav-link--active' : ''}`}
                 >
-                    Рассчитать
+                    {t('nav.calculate')}
                 </button>
             </nav>
+
+            <div className="lang-switcher">
+                <button
+                    onClick={() => setIsLangOpen(prev => !prev)}
+                    className="nav-link lang-switcher__toggle">
+                    {LANGS.find(l => l.locale === locale)?.flag} ▼
+                </button>
+
+                {isLangOpen && (
+                    <>
+                        <div
+                            className="lang-switcher__overlay"
+                            onClick={() => setIsLangOpen(false)}
+                        />
+                        <div className="lang-switcher__menu">
+                            {LANGS.map(lang => (
+                                <button
+                                key={lang.locale}
+                                onClick={() => { changeLocale(lang.locale); setIsLangOpen(false)}}
+                                className={`lang-switcher__option ${locale === lang.locale ? 'lang-switcher__option--active' : ''}`}
+                                >
+                                    <span className="lang-switcher__flag">{lang.flag}</span>
+                                    <span className="lang-switcher__label">{lang.label}</span>
+                                    {locale === lang.locale && <span className="lang-switcher__check">✓</span>}
+                                </button>
+                            ))}
+                        </div>
+                    </>
+                )}
+            </div>
         </header>
     )
 }

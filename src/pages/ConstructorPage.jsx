@@ -3,8 +3,11 @@ import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useRecipes } from "../hooks/useRecipes"
 import ContactFooter from "../components/Footer/ContactFooter.jsx";
+import {useTranslation} from "../context/LocaleContext.jsx";
 
 export default function ConstructorPage() {
+
+    const { t } = useTranslation()
 
     const {
         register,
@@ -79,8 +82,8 @@ export default function ConstructorPage() {
 
     return (
         <div className="calculator-container">
-            <button className="btn" onClick={() => navigate('/')}>Назад</button>
-            <h1>{isEditMode ? 'Редактировать рецепт' : 'Новый рецепт'}</h1>
+            <button className="btn" onClick={() => navigate('/')}>{t('constructor.back')}</button>
+            <h1>{isEditMode ? t('constructor.editRecipe') : t('constructor.newRecipe')}</h1>
 
             <label>
                 <input
@@ -91,26 +94,26 @@ export default function ConstructorPage() {
                         setTitle(e.target.value)
                         if (e.target.value) setTitleError(false)
                     }}
-                    placeholder="Название рецепта"
+                    placeholder={t('constructor.recipeNamePlaceholder')}
                 />
             </label>
 
             <fieldset>
-                <legend>Новый ингридиент</legend>
+                <legend>{t('constructor.newIngredient')}</legend>
                 <input
-                    {...register('ingName', {required: 'Введите название ингридиента'})}
+                    {...register('ingName', {required: t('constructor.nameRequired')})}
                     className={errors.ingName ? 'input--error' : ''}
-                    placeholder="Что добавляем?"
+                    placeholder={t('constructor.whatToAdd')}
                     />
                 {errors.ingName && <span className="field-error">{errors.ingName.message}</span>}
                 <input
                     {...register('ingAmount', {
-                        required: "Введите кол-во",
+                        required: t('constructor.amountRequired'),
                         validate: (val) => /^\d*\.?\d*$/.test(val.replace(',', '.')) || 'Только цифры!'
                     })}
                     className={errors.ingAmount ? 'input--error' : ''}
                     inputMode="decimal"
-                    placeholder="Сколько"
+                    placeholder={t('constructor.howMuch')}
                 />
                 {errors.ingAmount && <span className="field-error">{errors.ingAmount.message}</span>}
                 <select {...register('ingUnit')}>
@@ -122,7 +125,7 @@ export default function ConstructorPage() {
                 <option value="ст.л">ст.л</option>
                 </select>
                 <button className="add-btn" onClick={handleSubmit(onAddIngredient)}>
-                    {editingIngId !== null ? "Сохранить изменение" : "Добавить"}
+                    {editingIngId !== null ? t('constructor.saveChange') : t('constructor.add')}
                 </button>
         </fieldset>
 
@@ -134,12 +137,12 @@ export default function ConstructorPage() {
                             <button
                                 className="btn-card"
                                 onClick={() => handleEditIngredient(ing)}>
-                                Изменить
+                                {t('constructor.changeIng')}
                             </button>
                             <button
                             onClick={() => handleDeleteIngredient(ing.id)}
                             >
-                                Удалить
+                                {t('constructor.deleteIng')}
                             </button>
                         </div>
 
@@ -147,7 +150,7 @@ export default function ConstructorPage() {
                 ))}
             </ul>
 
-            <button className="btn" onClick={handleSave}>Сохранить рецепт</button>
+            <button className="btn" onClick={handleSave}>{t('constructor.save')}</button>
 
             <ContactFooter />
         </div>

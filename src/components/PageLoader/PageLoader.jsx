@@ -1,9 +1,12 @@
 import {useEffect, useState} from "react";
 import { motion, AnimatePresence } from 'framer-motion'
 import {GiSaltShaker} from "react-icons/gi";
+import { useTranslation } from "../../context/LocaleContext.jsx";
+
 
 export default function PageLoader() {
     const [isVisible, setIsVisible] = useState(true)
+    const {t } = useTranslation()
 
     useEffect(() => {
         const timer = setTimeout(() => setIsVisible(false), 1500)
@@ -43,7 +46,7 @@ export default function PageLoader() {
                             letterSpacing: '2px',
                         }}
                     >
-                        ЗАГРУЗКА...
+                        {t('loader.text')}
                     </motion.p>
                 </motion.div>
             )}

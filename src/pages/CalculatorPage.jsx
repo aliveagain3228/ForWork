@@ -1,11 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRecipes } from "../hooks/useRecipes.js";
 import {useNavigate} from "react-router-dom";
 import ContactFooter from "../components/Footer/ContactFooter.jsx";
+import {useTranslation} from "../context/LocaleContext.jsx";
 
 export default function CalculatorPage() {
     const { recipes } = useRecipes()
-
+    const { t } = useTranslation()
     const navigate = useNavigate()
 
     const [selectedId, setSelectedId] = useState(recipes[0]?.id || null)
@@ -18,11 +19,11 @@ export default function CalculatorPage() {
 
     return (
         <div className="calculator-container">
-            <button className="btn" onClick={() => navigate('/')}>Назад</button>
-            <h1>Калькулятор</h1>
+            <button className="btn" onClick={() => navigate('/')}>{t('calculator.back')}</button>
+            <h1>{t('calculator.title')}</h1>
 
             {recipes.length === 0 ? (
-                <p>Рецепты не найдены</p>
+                <p>{t('calculator.notFound')}</p>
             ) : (
                 <>
                     <select className="calculator-title-input" onChange={handleSelectChange}>
@@ -34,7 +35,7 @@ export default function CalculatorPage() {
                     </select>
 
                     <label style={{ display: 'flex', flexDirection: 'column', gap: '10px'}}>
-                        Коэффициент (500г = 0.5)
+                        {t('calculator.coefficient')}
                         <input
                             className="calculator-title-input"
                             type="text"
@@ -52,7 +53,7 @@ export default function CalculatorPage() {
                         />
                     </label>
 
-                    <h3>Результат для коэффициента: {weight}</h3>
+                    <h3>{t('calculator.result')}: {weight}</h3>
                     <ul className="ing-list">
                         {selectedRecipe?.list.map((ing, index) => (
                             <li key={index}>

@@ -3,6 +3,7 @@ import { useRecipes} from "../hooks/useRecipes.js";
 import ContactFooter from "../components/Footer/ContactFooter.jsx";
 import { RiDeleteBin6Line } from "react-icons/ri"
 import {useState} from "react";
+import {useTranslation} from "../context/LocaleContext.jsx";
 
 export default function LibraryPage() {
     const [search, setSearch] = useState('')
@@ -11,32 +12,33 @@ export default function LibraryPage() {
     const { recipes, deleteRecipe, clearAll } = useRecipes()
 
     const filtered = recipes.filter(r => r.name.toLowerCase().includes(search.toLowerCase()))
+    const { t } = useTranslation()
 
     return (
         <div className="library-container">
             <header className="library-header">
-                <h1 className="library-title">Калькулятор специй</h1>
+                <h1 className="library-title">{t('library.title')}</h1>
 
                 <div className="top-actions">
                     <button onClick={() => navigate('/calculator')} className="btn">
-                        Рассчитать
+                        {t('library.calculate')}
                     </button>
                     <button onClick={() => navigate('/constructor')} className="btn">
-                        + Создать новый рецепт
+                        {t('library.createRecipe')}
                     </button>
                 </div>
             </header>
 
             <section className="library-content">
                 <div className="stats-info">
-                    Всего рецептов: <span>{recipes.length}</span>
+                    {t('library.totalRecipes')}: <span>{recipes.length}</span>
                 </div>
 
                 <div className="search-wrapper">
                     <input
                         type="text"
                         className="search-input"
-                        placeholder="Поиск рецепта..."
+                        placeholder={t('library.searchPlaceholder')}
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
                     />
@@ -47,13 +49,13 @@ export default function LibraryPage() {
 
                 {recipes.length === 0 ? (
                     <div className="empty-state">
-                        <p>У вас пока нет рецептов, нажмите кнопку выше чтобы создать :)</p>
+                        <p>{t('library.noRecipes')}</p>
                     </div>
 
                 ) : (
                     <div className="recipe-grid">
                         {filtered.length === 0 ? (
-                            <p className="empty-state">Ничего не найдено по запросу "{search}"</p>
+                            <p className="empty-state">{t('library.notFound')} "{search}"</p>
                         ) : filtered.map(recipe => (
                         <div key={recipe.id} className="recipe-card" onClick={() => navigate(`/constructor/${recipe.id}`)}>
                                 <div className="recipe-info">
@@ -67,7 +69,7 @@ export default function LibraryPage() {
                                             setConfirmDeleteId(recipe.id)
                                         }}
                                         className="btn-icon-delete"
-                                        title="Удалить"
+                                        title={t('library.delete')}
                                     >
                                         <RiDeleteBin6Line />
                                     </button>
@@ -76,7 +78,7 @@ export default function LibraryPage() {
                                         onClick={() => navigate(`/constructor/${recipe.id}`)}
                                         className="btn-card"
                                     >
-                                        Изменить
+                                        {t('library.edit')}
                                     </button>
                                 </div>
                             </div>
@@ -93,7 +95,7 @@ export default function LibraryPage() {
                     <button
                         onClick={clearAll} className="btn-clear "
                     >
-                        Очистить всё
+                        {t('library.clearAll')}
                     </button>
                 </footer>
 
@@ -102,7 +104,7 @@ export default function LibraryPage() {
             {confirmDeleteId && (
                 <div className="confirm-overlay" onClick={() => setConfirmDeleteId(null)}>
                     <div className="confirm-dialog" onClick={(e) => e.stopPropagation()}>
-                        <p>Удалить этот рецепт?</p>
+                        <p>{t('library.confirmDelete')}</p>
                         <div className="confirm-actions">
                             <button
                                 className="btn"
@@ -111,13 +113,13 @@ export default function LibraryPage() {
                                     setConfirmDeleteId(null)
                                 }}
                             >
-                                Удалить
+                                {t('library.delete')}
                             </button>
                             <button
                                 className="btn-clear"
                                 onClick={() => setConfirmDeleteId(null)}
                             >
-                                Отмена
+                                {t('library.cancel')}
                             </button>
                         </div>
                     </div>
